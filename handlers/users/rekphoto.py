@@ -2,12 +2,19 @@ from aiogram import Router, types
 
 rt = Router()
 
-
 @rt.message()
-async def test(msg: types.Message):
-    print(msg.delete_chat_photo)
+async def reklama(msg: types.Message):
+
+    entities = msg.entities or []
+    caption_entities = msg.caption_entities or []
+
     if msg.delete_chat_photo:
-        turi = msg.delete_chat_photo[0].type in ["url", "mention"]
-        if turi:
+        print("Guruh rasmi o'chirildi")
+
+    for entity in entities + caption_entities:
+        if entity.type in ["url", "text_link"]:
             await msg.delete()
-            await msg.answer(f"reklama tarqatmang {msg.from_user.first_name}")
+            await msg.answer(
+                "Reklama yuborish mumkin emas!"
+            )
+            return

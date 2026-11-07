@@ -7,6 +7,7 @@ from aiogram.exceptions import (
 from config.settings import BOT_TOKEN
 
 from handlers.users.rek import rt as rek
+from handlers.users.useer import rt as useer
 from handlers.users.rekphoto import rt as rekphoto
 from handlers.users.reklama import  rt as reklama
 # from handlers.users.start import rt as start
@@ -36,6 +37,7 @@ async def main():
 
 
     # dp.include_router(reklama)
+    dp.include_router(useer)
     dp.include_router(rekphoto)
     dp.include_router(rek)
     # dp.include_router(start)
