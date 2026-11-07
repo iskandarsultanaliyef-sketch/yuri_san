@@ -1,27 +1,33 @@
 import asyncio
+import logging
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from aiogram.exceptions import (
     TelegramNetworkError,
     TelegramUnauthorizedError,
 )
+
 from config.settings import BOT_TOKEN
 
+# Handler/Routerlarni import qilish
+from handlers.users.aareklama import rt as aareklama
 from handlers.users.rek import rt as rek
 from handlers.users.useer import rt as useer
 from handlers.users.rekphoto import rt as rekphoto
-from handlers.users.reklama import  rt as reklama
-# from handlers.users.start import rt as start
+from handlers.users.reklama import rt as reklama
+from handlers.users.start import rt as start
 from handlers.users.cars import rt as cars
 from handlers.users.shops import rt as shops
 from handlers.users.ismlar import rt as ismlar
 from handlers.users.fruits import rt as fruits
 from handlers.users.gp_pro import rt as gp_pro
 from handlers.users.hm import rt as hm
-# from handlers.users.help import rt as help
-# from handlers.users.aloooo import rt as aloooo
+from handlers.users.help import rt as help
+from handlers.users.aloooo import rt as aloooo
 from handlers.users.itphoto import rt as itphoto
 from handlers.users.phote import rt as phote
-# from handlers.users.forward import rt as forward
+from handlers.users.forward import rt as forward
 from handlers.users.time import rt as time
 from handlers.users.fromid import rt as fromid
 from handlers.users.id import rt as id
@@ -31,45 +37,58 @@ from handlers.users.reply import rt as reply
 from handlers.users.delete import rt as delete
 from handlers.users.pin import rt as pin
 from handlers.users.test import rt as test
+
 dp = Dispatcher()
+
 async def main():
-    bot = Bot(BOT_TOKEN)
+    # aiogram 3.x uchun Bot obyektini yaratish
+    bot = Bot(
+        token=BOT_TOKEN,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+    )
 
+    # Routerlarni ulash (kerakli routerlarni izohdan chiqaring)
+    dp.include_routers(
+        # start,
+        aareklama,
+        # reklama,
+        # useer,
+        # rekphoto,
+        # rek,
+        # cars,
+        # shops,
+        # ismlar,
+        # fruits,
+        # gp_pro,
+        # help,
+        # hm,
+        # aloooo,
+        # itphoto,
+        # phote,
+        # forward,
+        # time,
+        # fromid,
+        # id,
+        # akja,
+        # answer,
+        # reply,
+        # delete,
+        # pin,
+        # test
+    )
 
-    # dp.include_router(reklama)
-    dp.include_router(useer)
-    dp.include_router(rekphoto)
-    dp.include_router(rek)
-    # dp.include_router(start)
-    # dp.include_router(cars)
-    # dp.include_router(shops)
-    # dp.include_router(ismlar)
-    # dp.include_router(fruits)
-    # dp.include_router(gp_pro)
-    # dp.include_router(help)
-    # dp.include_router(hm)
-    # dp.include_router(aloooo)
-    # dp.include_router(itphoto)
-    # dp.include_router(phote)
-    # dp.include_router(forward)
-    # dp.include_router(time)
-    # dp.include_router(fromid)
-    # dp.include_router(id)
-    # dp.include_router(akja)
-    # dp.include_router(answer)
-    # dp.include_router(reply)
-    # dp.include_router(delete)
-    # dp.include_router(pin)
-    # dp.include_router(test)
-
+    # Eski kutilayotgan buyruqlarni tozalash (eski soʻrovlar birdan kelib tushmasligi uchun)
+    await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
+
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)  # Konsolda xatolik va loglarni ko'rish uchun
     try:
-        print("bot ishga tushdi")
+        print("Bot ishga tushdi...")
         asyncio.run(main())
     except KeyboardInterrupt:
-        print("bot to'xtatildi")
+        print("Bot to'xtatildi.")
     except TelegramNetworkError:
-        print("internetga yo'q")
+        print("Internet aloqasi yo'q!")
     except TelegramUnauthorizedError:
-        print("token xato!")
+        print("BOT_TOKEN xato kiritilgan!")
