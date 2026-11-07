@@ -11,51 +11,51 @@ TOKEN = "TOKENINGIZNI_SHU_YERGA_YOZING"
 
 router = Router()
 logging.basicConfig(level=logging.INFO)
-
-
-@router.message(F.contact)
-async def contact(msg: types.Message):
-    await msg.answer("contact")
-
-@router.message(F.video)
-async def video(msg: types.Message):
-    await msg.answer("video")
-
-
-@router.message(F.audio)
-async def audio(msg: types.Message):
-    await msg.answer("audio")
-
-
-
-@router.message(F.photo)
-async def rasim(msg: types.Message):
-    await msg.answer("photo")
-
-
-@router.message(F.voice)
-async def golos(msg: types.Message):
-    await msg.answer("voice")
-
-@router.message(F.video_note)
-async def vd(msg: types.Message):
-    await msg.answer("video_note")
-
-
-@router.message(F.location)
-async def l(msg: types.Message):
-    await msg.answer("location")
-
-@router.message(F.animation)
-async def gif(msg: types.Message):
-    await msg.answer("animation")
-
-
-@router.message(F.sticker)
-async def sticker(msg: types.Message):
-    await msg.answer("sticker")
-
-
+#
+#
+# @router.message(F.contact)
+# async def contact(msg: types.Message):
+#     await msg.answer("contact")
+#
+# @router.message(F.video)
+# async def video(msg: types.Message):
+#     await msg.answer("video")
+#
+#
+# @router.message(F.audio)
+# async def audio(msg: types.Message):
+#     await msg.answer("audio")
+#
+#
+#
+# @router.message(F.photo)
+# async def rasim(msg: types.Message):
+#     await msg.answer("photo")
+#
+#
+# @router.message(F.voice)
+# async def golos(msg: types.Message):
+#     await msg.answer("voice")
+#
+# @router.message(F.video_note)
+# async def vd(msg: types.Message):
+#     await msg.answer("video_note")
+#
+#
+# @router.message(F.location)
+# async def l(msg: types.Message):
+#     await msg.answer("location")
+#
+# @router.message(F.animation)
+# async def gif(msg: types.Message):
+#     await msg.answer("animation")
+#
+#
+# @router.message(F.sticker)
+# async def sticker(msg: types.Message):
+#     await msg.answer("sticker")
+#
+# 
 
 @router.message(F.dice)
 async def dice(msg: types.Message):

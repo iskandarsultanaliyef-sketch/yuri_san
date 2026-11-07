@@ -19,4 +19,4 @@ async def say(msg: types.Message):
                          f"ID: {rt.id}")
 
     else:
-        await msg.answer("mmmmmmm")
+        await msg.answer("a")
