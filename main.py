@@ -10,6 +10,20 @@ from aiogram.exceptions import (
 
 from config.settings import BOT_TOKEN
 
+
+
+
+
+
+
+
+
+
+from handlers.IKI import rt as iki
+from handlers.users.left_back import rt as left_back
+from handlers.users.messi import rt as messi
+from imtihon.bir import rt as bir
+from handlers.users.bazor import rt as bazor
 # Handler/Routerlarni import qilish
 from handlers.users.aareklama import rt as aareklama
 from handlers.users.rek import rt as rek
@@ -37,6 +51,7 @@ from handlers.users.reply import rt as reply
 from handlers.users.delete import rt as delete
 from handlers.users.pin import rt as pin
 from handlers.users.test import rt as test
+from imtihon.ikki import rt as ikki
 
 dp = Dispatcher()
 
@@ -49,8 +64,13 @@ async def main():
 
     # Routerlarni ulash (kerakli routerlarni izohdan chiqaring)
     dp.include_routers(
+        ikki
+        # left_back,
+        # messi
+        # bir,
+        # bazor,
         # start,
-        aareklama,
+        # aareklama,
         # reklama,
         # useer,
         # rekphoto,
