@@ -52,6 +52,9 @@ from handlers.users.delete import rt as delete
 from handlers.users.pin import rt as pin
 from handlers.users.test import rt as test
 from imtihon.ikki import rt as ikki
+from takrorlash.rekqilma import rt as rekqilma
+
+
 
 dp = Dispatcher()
 
@@ -64,7 +67,10 @@ async def main():
 
     # Routerlarni ulash (kerakli routerlarni izohdan chiqaring)
     dp.include_routers(
-        ikki
+
+    rekqilma
+
+        # ikki
         # left_back,
         # messi
         # bir,
